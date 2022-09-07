@@ -2,7 +2,7 @@
 
 The backend API component of the Genealogy Web Application.
 
-This is a Node JS (Express JS) REST API with a Mongo DB document store.
+This is a Python (Fast API) REST API with a Mongo DB document store.
 
 Models are based on [GEDCOM X](http://www.gedcomx.org/schemas.html).
 
@@ -10,53 +10,29 @@ Models are based on [GEDCOM X](http://www.gedcomx.org/schemas.html).
 * Add routes, controllers and any additional models for Events - `Graham Bragg`.
 * Add routes, controllers and any additional models for Relationships - `Graham Bragg`.
 * Develop model for multi-tree paradigm - tenancies for individual families to use with ability to link trees. - `Simon Bragg`
-* Expand model to include all GEDCOMX types.
 * Add additional logging to API endpoints.
 * Add exception handling to API endpoints.
 * Add Validation to models and API endpoints.
 * Add additional Swagger documentation.
 * Add Authentication and Authorisation
-  * Authentication via passport modules as per [Nest JS Authentication](https://docs.nestjs.com/techniques/authentication) - Allow Google, Microsoft, Facebook.
+  * Authentication via passport modules - Allow Google, Microsoft, Facebook etc.
 
 ## Getting Started
 
 ### Pre-reading
 
-* [Nest JS Docs](https://docs.nestjs.com/)
+* [FastAPI](https://fastapi.tiangolo.com/)
 * [Modern Full-Stack Development with Nest.js, React, TypeScript, and MongoDB](https://auth0.com/blog/modern-full-stack-development-with-nestjs-react-typescript-and-mongodb-part-1/)
 
 ### Prerequisites
 
-* `Node JS` + NPM
-* `Yarn`
+* `Python >= 3.8`
+* `Poetry`
 * `Gitflow` (recommended)
 * `Docker` / `Mongo DB` Locally installed
-* `Nest CLI` (recommended)
+  * Docker Compose
 
 ### Installing
-
-#### Node JS 
-
-It is recommended to use Node Version Manager to do this. 
-
-See 
-[NVM ](https://github.com/nvm-sh/nvm "NVM Homepage")
-
-```
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-
-nvm version-remote --lts
-
-nvm install {{version}}
-
-nvm install-latest-npm
-```
-
-#### Yarn
-
-```
-npm install -g yarn
-```
 
 #### Gitflow (recommended)
 
@@ -68,11 +44,11 @@ npm install -g yarn
 
 See your Operating System's distribution.
 
-#### Nest CLI
+See [Docker Compose](https://docs.docker.com/compose/install/)
 
-```
-npm install -g @nestjs/cli
-```
+#### Poetry
+
+See [Poetry](https://python-poetry.org/docs/)
 
 #### Clone Project
 
@@ -84,7 +60,7 @@ git clone https://github.com/GrahamBragg/genealogy-backend.git
 ```
 cd genealogy-backend/
 
-yarn install
+poetry install
 ```
 
 #### Create new .env file from .env.example
@@ -105,32 +81,33 @@ Make sure Mongo DB is accessible at the address in `.env`/`.local.env` (probably
 ```
 mkdir ~/data
 
-docker run --name mongo -d -p 27017:27017 -v ~/data:/data/db mongo
+docker-compose up -d
+
 ```
 
 ### Debug the project
 
 ```
-yarn run start:debug
+poetry run uvicorn app.main:app --reload --host localhost --port 8080
 ```
 
-The application will start on the port defined in `.env`/`.local.env`.
+The application will start on the port `8080`.
 
-You should be able to navigate to the URL http://localhost:{port}.
+You should be able to navigate to the URL http://localhost:8080.
 
-E.g. [http://localhost:3000](http://localhost:3000) for default.
+E.g. [http://localhost:8080](http://localhost:8080) for default.
 
 This is the root for the API.
+
+Docs are located at:
+
+* [http://localhost:8080/docs](Swagger Docs)
+* [http://localhost:8080/redoc](ReDoc Docs)
 
 #### API Test Software
 
 It is recommend to use software such as Insomnia or Postman for testing the API.
 
-### Nest CLI
-
-It is recommended to use Nest CLI when adding `modules`, `services`, etc.
-
-View the docs at [Nest CLI Usage](https://docs.nestjs.com/cli/usages)
 
 ## Running the tests
 
@@ -150,8 +127,8 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Nest JS](https://nestjs.com/) - The web framework used
-* [NPM](https://www.npmjs.com/) - Dependency Management
+* [FastAPI](https://fastapi.tiangolo.com/) - The web framework used
+* [Poetry](https://python-poetry.org/docs/)- Dependency Management
 * [MongoDB](https://www.mongodb.com/) - Database and document store
 
 ## Versioning
@@ -168,16 +145,6 @@ See also the list of [contributors](https://github.com/GrahamBragg/genealogy-bac
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Significant inspiration (straight copying) for models from [gedcomx-ts](https://github.com/Freedoms-Loom/gedcomx-ts)
-
-## Swagger UI
-
-This project includes a swagger api definition which can be accessed at [http://localhost:3000/api](http://localhost:3000/api).
-
-This contains a reference to the API end points and the models involved.
 
 ## Sample JSON
 
