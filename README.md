@@ -80,17 +80,13 @@ make run
 
 ##### Docker
 
-```
-mkdir ~/data
+```sh
+# Docker compose up
+make up
 
-docker-compose up -d
+# Docker compose down
+make down
 
-```
-
-### Debug the project
-
-```
-poetry run uvicorn app.main:app --reload --host localhost --port 8080
 ```
 
 The application will start on the port `8080`.
