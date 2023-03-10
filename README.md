@@ -74,6 +74,10 @@ PROJECT_NAME=backend
 
 Make sure Mongo DB is accessible at the address in `.env` (probably mongodb://localhost:27017)
 
+```sh
+make run
+```
+
 ##### Docker
 
 ```
