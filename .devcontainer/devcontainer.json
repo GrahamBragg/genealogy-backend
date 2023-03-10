@@ -1,0 +1,15 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/python:3.11-bullseye",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:1": {},
+    "ghcr.io/devcontainers-contrib/features/poetry:2": {}
+},
+"customizations": {
+	"vscode": {
+		"extensions": [
+			"mongodb.mongodb-vscode",
+			"ms-vscode.makefile-tools"
+		]
+	}
+}
+}
