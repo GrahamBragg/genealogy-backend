@@ -4,8 +4,12 @@ from beanie import Document
 from pydantic import BaseModel
 from gedcomx.models import (
     Attribution,
+    Coverage,
+    GedURI,
     Identifier,
     Note,
+    ResourceReference,
+    ResourceType,
     SourceDescription as GedcomSourceDescription,
     SourceCitation,
     SourceReference,
@@ -31,24 +35,27 @@ class SourceDescription(Document, GedcomSourceDescription):
 
 
 class UpdateSourceDescriptionModel(BaseModel):
-    resourceType: Union[None, str]
-    citations: Union[None, list[SourceCitation]]
+    resourceType: Union[None, ResourceType]
+    citations: Union[None, SourceCitation, list[SourceCitation]]
     mediaType: Union[None, str]
-    about: Union[None, str]
-    mediator: Union[None, str]
-    publisher: Union[None, str]
-    authors: Union[None, list[str]]
-    sources: Union[None, list[str]]
-    analysis: Union[None, str]
+    about: Union[ResourceReference, GedURI, None]
+    mediator: Union[ResourceReference, GedURI, None]
+    publisher: Union[ResourceReference, GedURI, None]
+    authors: Union[None, list[Union[ResourceReference, GedURI]]]
+    sources: Union[None, list[SourceReference]]
+    analysis: Union[ResourceReference, GedURI, None]
     componentOf: Union[None, SourceReference]
     titles: Union[None, list[TextValue]]
     notes: Union[None, list[Note]]
     attribution: Union[None, Attribution]
+    rights: Union[None, list[GedURI]]
+    coverage: Union[None, list[Coverage]]
+    descriptions: Union[None, list[TextValue]]
     identifiers: Union[None, list[Identifier]]
     created: Union[None, datetime]
     modified: Union[None, datetime]
     published: Union[None, datetime]
-    repository: Union[None, str]
+    repository: Union[ResourceReference, GedURI, None]
 
     class Collection:
         name = "source_description"

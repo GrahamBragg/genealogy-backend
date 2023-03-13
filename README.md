@@ -7,15 +7,14 @@ This is a Python (Fast API) REST API with a Mongo DB document store.
 Models are based on [GEDCOM X](http://www.gedcomx.org/schemas.html).
 
 ## TODO
-* Add routes, controllers and any additional models for Events - `Graham Bragg`.
-* Add routes, controllers and any additional models for Relationships - `Graham Bragg`.
+* Add routes, controllers and any additional models for [Documents](https://github.com/FamilySearch/gedcomx/blob/master/specifications/conceptual-model-specification.md#document) - `Graham Bragg`.
+* Add routes, controllers and any additional models for [PlaceDescriptions](https://github.com/FamilySearch/gedcomx/blob/master/specifications/conceptual-model-specification.md#place-description) - `Graham Bragg`.
+* Add routes, controllers and any additional models for [Group](https://github.com/FamilySearch/gedcomx/blob/master/specifications/conceptual-model-specification.md#group) - `Graham Bragg`.
 * Develop model for multi-tree paradigm - tenancies for individual families to use with ability to link trees. - `Simon Bragg`
 * Add additional logging to API endpoints.
 * Add exception handling to API endpoints.
 * Add Validation to models and API endpoints.
-* Add additional Swagger documentation.
 * Add Authentication and Authorisation
-  * Authentication via passport modules - Allow Google, Microsoft, Facebook etc.
 
 ## Getting Started
 

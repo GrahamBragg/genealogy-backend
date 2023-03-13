@@ -33,7 +33,8 @@ class Relationship(Document, GedcomRelationship):
 
 class UpdateRelationshipModel(BaseModel):
     type: Union[None, RelationshipType]
-    person1: Union[None, ResourceReference, GedURI]
+    person1: Union[ResourceReference, GedURI]
+    person2: Union[ResourceReference, GedURI]
     facts: Union[None, list[Fact]]
 
     class Collection:
