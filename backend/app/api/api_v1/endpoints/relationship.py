@@ -18,8 +18,8 @@ async def check():
     response_model=List[Relationship],
 )
 async def get_relationships():
-    Relationships = await retrieve_relationships()
-    return Relationships
+    relationships = await retrieve_relationships()
+    return relationships
 
 
 @router.get(
@@ -28,9 +28,9 @@ async def get_relationships():
     response_model=Relationship,
 )
 async def get_relationship_data(id: PydanticObjectId):
-    Relationship = await retrieve_relationship(id)
-    if Relationship:
-        return Relationship
+    relationship = await retrieve_relationship(id)
+    if relationship:
+        return relationship
     raise HTTPException(
         status_code=404, detail="Relationship with id {0} not found".format(id)
     )

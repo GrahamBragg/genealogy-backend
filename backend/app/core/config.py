@@ -3,6 +3,7 @@ from typing import List, Optional, Union
 from app.models.event import Event
 from app.models.person import Person
 from app.models.relationship import Relationship
+from app.models.source_description import SourceDescription
 
 from beanie import init_beanie
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -40,7 +41,8 @@ class Settings(BaseSettings):
 async def initiate_database():
     client = AsyncIOMotorClient(Settings().DATABASE_URL)
     await init_beanie(
-        database=client.get_default_database(), document_models=[Event, Person, Relationship]
+        database=client.get_default_database(),
+        document_models=[Event, Person, Relationship, SourceDescription],
     )
 
 

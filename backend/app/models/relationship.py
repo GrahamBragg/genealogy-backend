@@ -32,7 +32,6 @@ class Relationship(Document, GedcomRelationship):
 
 
 class UpdateRelationshipModel(BaseModel):
-
     type: Union[None, RelationshipType]
     person1: Union[None, ResourceReference, GedURI]
     facts: Union[None, list[Fact]]
